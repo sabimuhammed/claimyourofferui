@@ -1,65 +1,169 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+
+const FREEDROPS_ICON = "/freedrops.png";
+
+type Tab = "offers" | "about" | "contact";
+
+const TABS: { id: Tab; label: string }[] = [
+  { id: "offers", label: "Offers" },
+  { id: "about", label: "About" },
+  { id: "contact", label: "Contact" },
+];
+
+export default function CampaignPage() {
+  const [activeTab, setActiveTab] = useState<Tab>("offers");
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <div className="min-h-screen flex items-start justify-center bg-slate-100 md:py-12">
+      <div className="w-full max-w-[430px] min-h-screen md:min-h-[844px] bg-white flex flex-col relative overflow-hidden shadow-2xl md:rounded-[3rem]">
+
+        {/* Header — Samsung dominant */}
+        <header className="pt-6 px-8 pb-0 flex items-center justify-center shrink-0">
+          <div className="flex flex-col items-center w-full">
+            <Image src="/samsunglogo.png" alt="Samsung" width={220} height={56} className="h-30 w-auto object-contain" priority />
+            <div className="h-px w-10 bg-slate-200 mt-4 rounded-full" />
+          </div>
+        </header>
+
+        <main className="flex-1 px-8 flex flex-col">
+
+          {/* Hero */}
+          <div className="pt-6 mb-8">
+            <div className="flex items-center gap-2 mb-4">
+              <svg className="w-5 h-5 text-[#a8201a]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+              </svg>
+              <span className="text-[10px] font-extrabold text-[#a8201a] uppercase tracking-[0.2em]">Impact Achievement</span>
+            </div>
+            <h1 className="text-[2.6rem] font-extrabold tracking-tighter leading-[1.1] text-slate-900 mb-4">
+              You Just Donated <span className="text-[#a8201a]">20 Fils</span> To Charity.
+            </h1>
+            <p className="text-[15px] text-slate-500 font-medium leading-relaxed">
+              Thanks to our sponsors, this bottle helps support local charity and community hydration initiatives.
+            </p>
+          </div>
+
+          {/* Tabs */}
+          <section className="mb-6 flex-1">
+            <div className="flex gap-1 p-1 bg-slate-100 rounded-2xl mb-5">
+              {TABS.map(({ id, label }) => (
+                <button
+                  key={id}
+                  onClick={() => setActiveTab(id)}
+                  className={`flex-1 py-3 text-[12px] font-bold rounded-xl transition-all ${
+                    activeTab === id
+                      ? "bg-white text-slate-900 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.12)]"
+                      : "text-slate-500 hover:bg-white/50"
+                  }`}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+
+            {/* Offers */}
+            {activeTab === "offers" && (
+              <div className="relative rounded-2xl overflow-hidden shadow-[0_10px_30px_-10px_rgba(15,23,42,0.1)] aspect-video bg-gradient-to-br from-slate-800 to-slate-950">
+                {/* Decorative rings */}
+                <div className="absolute -top-10 -right-10 w-48 h-48 rounded-full bg-blue-500/10 blur-2xl" />
+                <div className="absolute -bottom-6 -left-6 w-32 h-32 rounded-full bg-[#1428A0]/10 blur-xl" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent" />
+                <div className="absolute bottom-5 left-6 right-6">
+                  <p className="text-[10px] font-extrabold text-blue-400 uppercase tracking-widest mb-1.5">Limited Offer</p>
+                  <h3 className="text-white font-extrabold text-lg leading-snug">Upgrade to Galaxy S24 Ultra &amp; Save.</h3>
+                </div>
+                {/* Samsung wordmark watermark */}
+                <div className="absolute top-4 right-5 opacity-20">
+                  <span className="text-white text-xs font-black tracking-tight">SAMSUNG</span>
+                </div>
+              </div>
+            )}
+
+            {/* About */}
+            {activeTab === "about" && (
+              <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-[0_10px_30px_-10px_rgba(15,23,42,0.08)]">
+                <h3 className="text-lg font-extrabold text-slate-900 mb-3">About Samsung</h3>
+                <p className="text-sm text-slate-500 leading-relaxed font-medium">
+                  Samsung creates innovative technology experiences used by millions worldwide — from smartphones and wearables to smart living solutions.
+                </p>
+              </div>
+            )}
+
+            {/* Contact — icons without circular bg bubbles */}
+            {activeTab === "contact" && (
+              <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-[0_10px_30px_-10px_rgba(15,23,42,0.08)] space-y-5">
+                <a href="https://www.samsung.com" className="flex items-center gap-4 group">
+                  <svg className="w-5 h-5 text-slate-400 shrink-0 group-hover:text-slate-700 transition-colors" fill="none" stroke="currentColor" strokeWidth={1.75} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253" />
+                  </svg>
+                  <div>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-0.5">Website</p>
+                    <p className="text-sm font-bold text-slate-900">www.samsung.com</p>
+                  </div>
+                </a>
+                <a href="tel:+9718007267864" className="flex items-center gap-4 group">
+                  <svg className="w-5 h-5 text-slate-400 shrink-0 group-hover:text-slate-700 transition-colors" fill="none" stroke="currentColor" strokeWidth={1.75} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 6.75z" />
+                  </svg>
+                  <div>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-0.5">Support</p>
+                    <p className="text-sm font-bold text-slate-900">800-SAMSUNG</p>
+                  </div>
+                </a>
+                <div className="flex items-center gap-4">
+                  <svg className="w-5 h-5 text-slate-400 shrink-0" fill="none" stroke="currentColor" strokeWidth={1.75} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0z" />
+                  </svg>
+                  <div>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-0.5">Headquarters</p>
+                    <p className="text-sm font-bold text-slate-900">Dubai Media City, UAE</p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </section>
+
+          {/* CTA */}
+          <div className="pb-6">
+            <Link
+              href="/claim"
+              className="flex items-center justify-center gap-3 w-full bg-[#a8201a] text-white py-[1.6rem] rounded-2xl font-extrabold text-xl transition-all active:scale-[0.97] group hover:brightness-110"
+              style={{ boxShadow: "0 20px 50px -10px rgba(168,32,26,0.35)" }}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+              <span className="tracking-tight">Claim Offer</span>
+              <svg className="w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </Link>
+          </div>
+        </main>
+
+        {/* Footer */}
+        <footer className="px-8 pt-6 pb-8 border-t border-slate-100 bg-white flex flex-col items-center">
+          <div className="flex flex-col items-center mb-5">
+            <Image src={FREEDROPS_ICON} alt="FreeDrops" width={43} height={64} className="h-16 w-11 object-contain mb-1" />
+            <p className="text-sm font-extrabold text-slate-800 tracking-tight leading-none">
+              FreeDrops<span className="text-[#a8201a]">.</span>ae
+            </p>
+            <p className="text-[8px] font-black text-slate-400 tracking-[0.28em] uppercase mt-1">Powered by FreeDrops</p>
+          </div>
+          <nav className="flex items-center gap-5 mb-5">
+            <a href="#about" className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.15em] hover:text-[#a8201a] transition-colors">About</a>
+            <div className="w-1 h-1 rounded-full bg-slate-300" />
+            <a href="#terms" className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.15em] hover:text-[#a8201a] transition-colors">Terms</a>
+          </nav>
+          <p className="text-[9px] font-semibold text-slate-300 uppercase tracking-widest text-center">
+            © 2024 FreeDrops Advertising Platform
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+        </footer>
+
+        <div className="absolute -top-32 -right-32 w-80 h-80 bg-[#a8201a]/5 rounded-full blur-[100px] pointer-events-none" />
+      </div>
     </div>
   );
 }
