@@ -1,6 +1,5 @@
-import Image from "next/image";
-
-const FREEDROPS_ICON = "/freedrops.png";
+import PageHeader from "@/components/PageHeader";
+import PageFooter from "@/components/PageFooter";
 
 const WHATSAPP_NUMBER = "971553333333";
 const WHATSAPP_MESSAGE = encodeURIComponent("Hi! I'd like to claim my free water offer sponsored by Samsung.");
@@ -10,19 +9,7 @@ export default function WhatsAppCampaignPage() {
     <div className="min-h-screen flex items-start justify-center bg-slate-100 md:py-12">
       <div className="w-full max-w-[430px] min-h-screen md:min-h-[844px] bg-white flex flex-col relative overflow-hidden shadow-2xl md:rounded-[3rem]">
 
-        {/* Header: FreeDrops left, Sponsored by Samsung right */}
-        <header className="pt-5 px-6 pb-0 flex items-center justify-between shrink-0">
-          <div className="flex items-center gap-2">
-            <Image src={FREEDROPS_ICON} alt="FreeDrops" width={24} height={36} className="h-9 w-6 object-contain" />
-            <span className="text-[15px] font-extrabold text-slate-800 tracking-tight">
-              FreeDrops<span className="text-[#a8201a]">.</span>ae
-            </span>
-          </div>
-          <div className="flex flex-col items-end">
-            <p className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em] leading-none mb-1">Sponsored by</p>
-            <Image src="/samsunglogo.png" alt="Samsung" width={90} height={24} className="h-6 w-auto object-contain" />
-          </div>
-        </header>
+        <PageHeader />
 
         <div className="flex-1 px-6 flex flex-col pt-5">
 
@@ -115,14 +102,7 @@ export default function WhatsAppCampaignPage() {
           </div>
         </div>
 
-        {/* Footer */}
-        <footer className="px-6 py-5 border-t border-slate-50 bg-slate-50/30 shrink-0">
-          <div className="flex justify-center gap-8 mb-3">
-            <a href="#about" className="text-[10px] font-bold text-slate-400 uppercase tracking-widest hover:text-slate-700 transition-colors">About Free Drops</a>
-            <a href="#terms" className="text-[10px] font-bold text-slate-400 uppercase tracking-widest hover:text-slate-700 transition-colors">Terms &amp; Conditions</a>
-          </div>
-          <p className="text-center text-[9px] font-bold text-slate-300 tracking-[0.1em] uppercase">© 2026 Freewater Advertising llc</p>
-        </footer>
+        <PageFooter />
 
         <div className="absolute -top-32 -right-32 w-80 h-80 bg-[#a8201a]/5 rounded-full blur-[100px] pointer-events-none" />
       </div>

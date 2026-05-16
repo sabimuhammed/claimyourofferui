@@ -1,10 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-
-const FREEDROPS_ICON = "/freedrops.png";
+import PageHeader from "@/components/PageHeader";
+import PageFooter from "@/components/PageFooter";
 
 type Tab = "offers" | "about" | "contact";
 
@@ -21,13 +20,7 @@ export default function CampaignPage() {
     <div className="min-h-screen flex items-start justify-center bg-slate-100 md:py-12">
       <div className="w-full max-w-[430px] min-h-screen md:min-h-[844px] bg-white flex flex-col relative overflow-hidden shadow-2xl md:rounded-[3rem]">
 
-        {/* Header — Samsung dominant */}
-        <header className="pt-6 px-8 pb-0 flex items-center justify-center shrink-0">
-          <div className="flex flex-col items-center w-full">
-            <Image src="/samsunglogo.png" alt="Samsung" width={220} height={56} className="h-30 w-auto object-contain" priority />
-            <div className="h-px w-10 bg-slate-200 mt-4 rounded-full" />
-          </div>
-        </header>
+        <PageHeader />
 
         <main className="flex-1 px-8 flex flex-col">
 
@@ -39,11 +32,13 @@ export default function CampaignPage() {
               </svg>
               <span className="text-[10px] font-extrabold text-[#a8201a] uppercase tracking-[0.2em]">Impact Achievement</span>
             </div>
-            <h1 className="text-[2.6rem] font-extrabold tracking-tighter leading-[1.1] text-slate-900 mb-4">
-              You Just Donated <span className="text-[#a8201a]">20 Fils</span> To Charity.
+            <h1 className="text-[2.1rem] font-extrabold tracking-tighter leading-[1.1] text-slate-900 mb-3">
+              Free water —{" "}
+              <span className="text-[#a8201a]">sponsored.</span>{" "}
+              Claim your offer.
             </h1>
-            <p className="text-[15px] text-slate-500 font-medium leading-relaxed">
-              Thanks to our sponsors, this bottle helps support local charity and community hydration initiatives.
+            <p className="text-[14px] text-slate-500 font-medium leading-relaxed">
+              Thanks for supporting a brand that funds hydration and local charity across the UAE.
             </p>
           </div>
 
@@ -143,24 +138,7 @@ export default function CampaignPage() {
           </div>
         </main>
 
-        {/* Footer */}
-        <footer className="px-8 pt-6 pb-8 border-t border-slate-100 bg-white flex flex-col items-center">
-          <div className="flex flex-col items-center mb-5">
-            <Image src={FREEDROPS_ICON} alt="FreeDrops" width={43} height={64} className="h-16 w-11 object-contain mb-1" />
-            <p className="text-sm font-extrabold text-slate-800 tracking-tight leading-none">
-              FreeDrops<span className="text-[#a8201a]">.</span>ae
-            </p>
-            <p className="text-[8px] font-black text-slate-400 tracking-[0.28em] uppercase mt-1">Powered by FreeDrops</p>
-          </div>
-          <nav className="flex items-center gap-5 mb-5">
-            <a href="#about" className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.15em] hover:text-[#a8201a] transition-colors">About</a>
-            <div className="w-1 h-1 rounded-full bg-slate-300" />
-            <a href="#terms" className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.15em] hover:text-[#a8201a] transition-colors">Terms</a>
-          </nav>
-          <p className="text-[9px] font-semibold text-slate-300 uppercase tracking-widest text-center">
-            © 2024 FreeDrops Advertising Platform
-          </p>
-        </footer>
+        <PageFooter />
 
         <div className="absolute -top-32 -right-32 w-80 h-80 bg-[#a8201a]/5 rounded-full blur-[100px] pointer-events-none" />
       </div>

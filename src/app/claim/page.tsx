@@ -1,10 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-
-const SAMSUNG_LOGO = "/samsunglogo.png";
+import PageHeader from "@/components/PageHeader";
+import PageFooter from "@/components/PageFooter";
 
 export default function ClaimPage() {
   const router = useRouter();
@@ -24,19 +23,7 @@ export default function ClaimPage() {
     <div className="min-h-screen flex items-start justify-center bg-slate-50 md:py-12">
       <div className="w-full max-w-[430px] min-h-screen md:min-h-[844px] bg-white flex flex-col relative overflow-hidden shadow-2xl md:rounded-[3rem]">
 
-        {/* Header: FreeDrops left | Samsung right */}
-        <header className="pt-5 px-6 pb-0 flex items-center justify-between shrink-0">
-          <div className="flex items-center gap-2">
-            <Image src="/freedrops.png" alt="FreeDrops" width={24} height={36} className="h-9 w-6 object-contain" />
-            <span className="text-[15px] font-extrabold text-slate-800 tracking-tight">
-              FreeDrops<span className="text-[#a8201a]">.</span>ae
-            </span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Image src={SAMSUNG_LOGO} alt="Samsung" width={140} height={48} className="h-16 w-auto object-contain opacity-50 grayscale" />
-            {/* <div className="w-px h-4 bg-slate-200" /> */}
-          </div>
-        </header>
+        <PageHeader />
 
         <div className="flex-1 px-8 flex flex-col pt-4">
 
@@ -102,17 +89,14 @@ export default function ClaimPage() {
           </form>
 
           {/* Progress dots */}
-          <div className="mt-auto pb-12 flex justify-center gap-1.5">
+          <div className="mt-10 pb-6 flex justify-center gap-1.5">
             <div className="w-12 h-1 bg-slate-100 rounded-full" />
             <div className="w-12 h-1 bg-[#a8201a] rounded-full" />
             <div className="w-12 h-1 bg-slate-100 rounded-full" />
           </div>
         </div>
 
-        {/* Footer */}
-        <footer className="px-8 py-6 border-t border-slate-50 bg-slate-50/30 shrink-0">
-          <p className="text-center text-[9px] font-bold text-slate-300 tracking-[0.1em] uppercase">© 2026 Freewater Advertising llc</p>
-        </footer>
+        <PageFooter />
 
         {/* Decorative blur */}
         <div className="absolute -top-32 -right-32 w-80 h-80 bg-[#a8201a]/5 rounded-full blur-[100px] pointer-events-none" />
