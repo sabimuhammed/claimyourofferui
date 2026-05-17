@@ -1,10 +1,37 @@
-import Image from "next/image";
+"use client";
+
+import { useState, useEffect, useRef } from "react";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 export default function PageFooter() {
+  const [loaded, setLoaded] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    if (imgRef.current?.complete) {
+      setLoaded(true);
+    }
+  }, []);
+
   return (
     <footer className="px-8 pt-6 pb-8 border-t border-slate-100 bg-white flex flex-col items-center shrink-0">
       <div className="flex flex-col items-center mb-5">
-        <Image src="/freedrops.png" alt="FreeDrops" width={43} height={64} className="h-16 w-11 object-contain mb-1" />
+        <div className="relative flex items-center justify-center mb-1" style={{ height: 64, width: 44 }}>
+          {!loaded && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <Skeleton width={44} height={64} borderRadius={8} />
+            </div>
+          )}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            ref={imgRef}
+            src="/freedrops.png"
+            alt="FreeDrops"
+            onLoad={() => setLoaded(true)}
+            className={`h-16 w-11 object-contain transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
+          />
+        </div>
         <p className="text-sm font-extrabold text-slate-800 tracking-tight leading-none">
           FreeDrops<span className="text-[#a8201a]">.</span>ae
         </p>
