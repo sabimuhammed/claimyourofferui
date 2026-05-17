@@ -1,7 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
-
-const FREEDROPS_LOGO = "/freedrops.png";
+import PageHeader from "@/components/PageHeader";
+import PageFooter from "@/components/PageFooter";
 
 const WHATSAPP_NUMBER = "971553333333";
 const WHATSAPP_MESSAGE = encodeURIComponent("Hi, I need support with a FreeDrops campaign link.");
@@ -11,10 +10,7 @@ export default function CampaignErrorPage() {
     <div className="min-h-screen flex items-start justify-center bg-slate-50 md:py-12">
       <div className="w-full max-w-[430px] min-h-screen md:min-h-[844px] bg-white flex flex-col relative overflow-hidden shadow-2xl md:rounded-[3rem]">
 
-        {/* Header */}
-        <header className="pt-5 px-8 pb-0 flex items-center justify-center shrink-0">
-          <Image src={FREEDROPS_LOGO} alt="FreeDrops Logo" width={37} height={56} className="h-14 w-9 object-contain" />
-        </header>
+        <PageHeader />
 
         {/* Main content */}
         <div className="flex-1 px-8 flex flex-col items-center justify-center text-center pb-16">
@@ -68,13 +64,7 @@ export default function CampaignErrorPage() {
           </a>
         </div>
 
-        {/* Footer */}
-        <footer className="px-8 py-6 border-t border-slate-50 shrink-0">
-          <div className="flex justify-center mb-3">
-            <a href="#terms" className="text-[10px] font-bold text-slate-400 uppercase tracking-widest hover:text-slate-900 transition-colors">Terms &amp; Conditions</a>
-          </div>
-          <p className="text-center text-[9px] font-bold text-slate-300 tracking-[0.1em] uppercase">© 2026 Freewater Advertising llc</p>
-        </footer>
+        <PageFooter />
       </div>
     </div>
   );

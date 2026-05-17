@@ -89,7 +89,7 @@ export default function ClaimPage() {
           </form>
 
           {/* Progress dots */}
-          <div className="mt-10 pb-6 flex justify-center gap-1.5">
+          <div className="mt-10 pb-8 flex justify-center gap-1.5">
             <div className="w-12 h-1 bg-slate-100 rounded-full" />
             <div className="w-12 h-1 bg-[#a8201a] rounded-full" />
             <div className="w-12 h-1 bg-slate-100 rounded-full" />
