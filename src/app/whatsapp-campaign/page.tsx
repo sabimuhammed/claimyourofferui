@@ -44,9 +44,9 @@ export default function WhatsAppCampaignPage() {
               <span className="text-[10px] font-extrabold text-[#a8201a] uppercase tracking-[0.2em]">Impact Achievement</span>
             </div>
             <h1 className="text-[2.1rem] font-extrabold tracking-tighter leading-[1.1] text-slate-900 mb-3">
-              Free water —{" "}
-              <span className="text-[#a8201a]">sponsored.</span>{" "}
-              Claim your offer.
+              You Just Donated{" "}
+              <span className="text-[#a8201a]">20 Fils</span>
+              {" "}To Charity.
             </h1>
             <p className="text-[14px] text-slate-500 font-medium leading-relaxed">
               Thanks for supporting a brand that funds hydration and local charity across the UAE.

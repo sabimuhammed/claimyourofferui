@@ -15,7 +15,7 @@ export default function PageHeader() {
   }, []);
 
   return (
-    <header className="pt-3 px-8 pb-0 flex items-center justify-center shrink-0">
+    <header className="pt-2 px-8 pb-0 flex items-center justify-center shrink-0">
       <div className="flex flex-col items-center w-full py-2">
         <div className="relative h-13 flex items-center justify-center" style={{ width: 220 }}>
           {!loaded && (
@@ -32,7 +32,7 @@ export default function PageHeader() {
             className={`h-13 w-auto object-contain transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
           />
         </div>
-        <div className="h-px w-16 bg-slate-200 mt-4 rounded-full" />
+        {/* <div className="h-px w-16 bg-slate-200 mt-2 rounded-full" /> */}
       </div>
     </header>
   );
