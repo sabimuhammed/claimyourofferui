@@ -35,16 +35,20 @@ export default function PageFooter() {
         <p className="text-sm font-extrabold text-slate-800 tracking-tight leading-none">
           FreeDrops<span className="text-[#a8201a]">.</span>ae
         </p>
-        <p className="text-[8px] font-black text-slate-400 tracking-[0.28em] uppercase mt-1">Powered by FreeDrops</p>
+        {/* <p className="text-[8px] font-black text-slate-400 tracking-[0.28em] uppercase mt-1">Powered by FreeDrops</p> */}
       </div>
       <nav className="flex items-center gap-5 mb-5">
-        <a href="#about" className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.15em] hover:text-[#a8201a] transition-colors">About</a>
+        <a href="https://freedrops.ae/" target="_blank" rel="noreferrer" className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.15em] hover:text-[#a8201a] transition-colors">About</a>
         <div className="w-1 h-1 rounded-full bg-slate-300" />
-        <a href="#terms" className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.15em] hover:text-[#a8201a] transition-colors">Terms</a>
+        <a href="https://freedrops.ae/terms" target="_blank" rel="noreferrer" className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.15em] hover:text-[#a8201a] transition-colors">Terms of Service</a>
       </nav>
       <p className="text-[9px] font-semibold text-slate-300 uppercase tracking-widest text-center">
-        © 2026 Freewater Advertising LLC
+        © 2026 Free Water Advertising L.L.C. All rights reserved.
       </p>
+        <p className="pb-6 pt-2 text-center">
+
+      <a href="https://bcwebco.com/" target="_blank" rel="noreferrer" className="mt-1 text-[10px] font-bold text-slate-400 uppercase tracking-widest transition-colors duration-200 hover:text-[#a8201a]">Powered by bytecode.ae</a>
+        </p>
     </footer>
   );
 }
